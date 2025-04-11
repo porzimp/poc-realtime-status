@@ -1,0 +1,365 @@
+/* สไตล์หลัก */
+:root {
+    --primary-color: #3366cc;
+    --secondary-color: #5588ee;
+    --background-color: #f5f8ff;
+    --text-color: #333333;
+    --border-color: #dddddd;
+    --online-color: #4CAF50;
+    --away-color: #FFC107;
+    --offline-color: #9e9e9e;
+    --error-color: #F44336;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  /* สไตล์คอนเทนเนอร์หลัก */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* ส่วนหัว */
+  .app-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .user-name {
+    font-weight: bold;
+  }
+  
+  .logout-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* ส่วนเนื้อหาหลัก */
+  .app-main {
+    display: flex;
+    flex: 1;
+  }
+  
+  /* ไซด์บาร์ */
+  .sidebar {
+    width: 250px;
+    background-color: white;
+    border-right: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+  
+  .sidebar h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  .room-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .room-item {
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+  }
+  
+  .room-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .room-item.selected {
+    background-color: #e6f0ff;
+    border-left: 3px solid var(--primary-color);
+  }
+  
+  .room-name {
+    font-weight: bold;
+  }
+  
+  .member-count {
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+  }
+  
+  /* ส่วนเนื้อหา */
+  .content {
+    flex: 1;
+    padding: 1rem;
+  }
+  
+  .no-room-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .room-content h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  /* สถานะออนไลน์ */
+  .status-container {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.25rem;
+  }
+  
+  .status-online .status-dot {
+    background-color: var(--online-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  }
+  
+  .status-away .status-dot {
+    background-color: var(--away-color);
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
+  }
+  
+  .status-offline .status-dot {
+    background-color: var(--offline-color);
+  }
+  
+  .last-seen {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  /* รายชื่อสมาชิก */
+  .room-members-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room-members-title {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .room-members-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .room-member-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .room-member-item:last-child {
+    border-bottom: none;
+  }
+  
+  .member-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .member-info {
+    flex: 1;
+  }
+  
+  .member-name {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* หน้าเข้าสู่ระบบ */
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f8ff;
+  }
+  
+  .login h1 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+  
+  .login-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .login-form h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+  
+  .login-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  /* ข้อความเมื่อโหลด */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f8ff;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* ข้อความแสดงข้อผิดพลาด */
+  .error-message {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* ส่วนท้าย */
+  .app-footer {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* รองรับอุปกรณ์มือถือ */
+  @media (max-width: 768px) {
+    .app-main {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
