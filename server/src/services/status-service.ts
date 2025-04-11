@@ -37,11 +37,13 @@ class StatusService {
 	): Promise<boolean> {
 		try {
 			// อัพเดท Firebase Realtime Database
-			const userStatusRef = db.ref(`status/${userId}`);
+			const userStatusRef = db.ref(`users/${userId}`);
 			await userStatusRef.update({
-				online: true,
-				lastSeenAt: ServerValue.TIMESTAMP,
-				status: "active",
+				isOnline: true,
+				lastSeen: Date.now(),
+				// online: true,
+				// lastSeenAt: ServerValue.TIMESTAMP,
+				// status: "active",
 				...data,
 			});
 
@@ -60,11 +62,12 @@ class StatusService {
 	async updateUserOfflineStatus(userId: string): Promise<boolean> {
 		try {
 			// อัพเดท Firebase Realtime Database
-			const userStatusRef = db.ref(`status/${userId}`);
+			const userStatusRef = db.ref(`users/${userId}`);
 			await userStatusRef.update({
-				online: false,
-				lastSeenAt: ServerValue.TIMESTAMP,
-				status: "offline",
+				isOnline: false,
+				lastSeen: Date.now(),
+				//lastSeenAt: ServerValue.TIMESTAMP,
+				//status: "offline",
 			});
 
 			console.log(`อัพเดทสถานะออฟไลน์ของผู้ใช้ ${userId} สำเร็จ`);
